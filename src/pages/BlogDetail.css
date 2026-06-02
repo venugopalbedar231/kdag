@@ -446,30 +446,6 @@
   margin-bottom: 16px;
 }
 
-/* ToC */
-.toc-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.toc-item {
-  display: block;
-  font-size: 13px;
-  color: var(--text-secondary);
-  padding: 6px 10px;
-  border-radius: 6px;
-  border-left: 2px solid var(--border);
-  cursor: default;
-  transition: color var(--transition), border-color var(--transition), background var(--transition);
-  line-height: 1.4;
-}
-
-.toc-item:hover {
-  color: var(--text-primary);
-  border-left-color: var(--accent-red);
-  background: rgba(232,57,42,0.05);
-}
 
 /* Related */
 .related-list {

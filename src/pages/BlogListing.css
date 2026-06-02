@@ -1,8 +1,6 @@
 .listing-page {
   min-height: 100vh;
 }
-
-/* ─── Hero ──────────────────────────── */
 .hero {
   position: relative;
   min-height: 500px;
@@ -151,7 +149,6 @@
   background: var(--border);
 }
 
-/* ─── Listing container ──────────────── */
 .listing-container {
   max-width: 1280px;
   margin: 0 auto;

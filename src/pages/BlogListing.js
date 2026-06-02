@@ -7,12 +7,9 @@ import './BlogListing.css';
 
 function BlogListing() {
   const [search, setSearch] = useState('');
-  const [selectedDomain, setSelectedDomain] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
 
-  // Extract unique domains and tags
-  const domains = useMemo(() =>
-    [...new Set(blogData.map(p => p.domain))].sort(), []);
+  // Extract tags
 
   const tags = useMemo(() => {
     const all = blogData.flatMap(p => p.tags);
@@ -30,12 +27,11 @@ function BlogListing() {
       const matchSearch = !q ||
         post.title.toLowerCase().includes(q) ||
         post.author.toLowerCase().includes(q);
-      const matchDomain = !selectedDomain || post.domain === selectedDomain;
       const matchTags = selectedTags.length === 0 ||
         selectedTags.every(t => post.tags.includes(t));
-      return matchSearch && matchDomain && matchTags;
+      return matchSearch && matchTags;
     });
-  }, [search, selectedDomain, selectedTags]);
+  }, [search, selectedTags]);
 
   const handleTagToggle = (tag) => {
     setSelectedTags(prev =>
@@ -44,18 +40,15 @@ function BlogListing() {
   };
 
   const clearFilters = () => {
-    setSelectedDomain(null);
     setSelectedTags([]);
     setSearch('');
   };
 
-  const hasActiveFilters = selectedDomain || selectedTags.length > 0 || search;
+  const hasActiveFilters = selectedTags.length > 0 || search;
 
   return (
     <div className="listing-page">
-      {/* Hero */}
       <section className="hero">
-
         <div className="hero-content">
           <h1 className="hero-title">
             <span className="hero-title-main">BLOG</span>
@@ -71,7 +64,6 @@ function BlogListing() {
               <span className="hero-stat-number">{blogData.length}</span>
               <span className="hero-stat-label">Articles</span>
             </div>
-            <div className="hero-stat-divider" />
             <div className="hero-stat-divider" />
             <div className="hero-stat">
               <span className="hero-stat-number">{tags.length}</span>
@@ -99,11 +91,8 @@ function BlogListing() {
           {/* Sidebar filters */}
           <aside className="listing-sidebar">
             <FilterBar
-              domains={domains}
               tags={tags}
-              selectedDomain={selectedDomain}
               selectedTags={selectedTags}
-              onDomainChange={setSelectedDomain}
               onTagChange={handleTagToggle}
               onClear={clearFilters}
             />

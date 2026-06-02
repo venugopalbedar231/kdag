@@ -25,8 +25,8 @@ function Navbar() {
         </Link>
 
         <div className={`navbar-links ${menuOpen ? 'open' : ''}`}>
-          <a href="#domains" className="nav-link">Events</a>
-          <a href="#tags" className="nav-link">Gallery</a>
+          <a href="#" className="nav-link">Events</a>
+          <a href="#" className="nav-link">Gallery</a>
           <a href="#" className="nav-link">ML Sheet</a>
           <a href="#" className="nav-link">Resources</a>
           <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>
